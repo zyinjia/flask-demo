@@ -2,14 +2,27 @@
 <html lang="en">
 	<head>
 		<meta charset="utf-8">
-		<title>Hello, World!</title>
+		<title>stocks</title>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap-theme.min.css">
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	</head>
 	<body>
 		<div>
-  			<h1>Hello, World!</h1>
+  			<h1>Please select a stock ticker</h1>
+				<h3>
+				<form id='stocks' method='post' action='plot_stock' > <!-- action must match your next URL -->
+				   <p>
+				   <input type='radio' name='stock' value='GOOG' checked> GOOG <br />
+				   <input type='radio' name='stock' value='NVDA'> NVDA <br />
+				   <input type='radio' name='stock' value='FB'>   FB   <br />
+					 <input type='radio' name='stock' value='AAPL'> AAPL <br />
+				   </p>
+				   <p>
+				   <input type='submit' value='Sumbit' /> <!--the 'value' is the word that will appear on your button.-->
+				   </p>
+				</form>
+				</h3>
 		</div>
 	</body>
 </html>
