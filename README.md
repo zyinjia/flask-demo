@@ -1,5 +1,5 @@
 # Show stock open prices
-Heroku link 
+Heroku link http://frozen-river-36131.herokuapp.com/index
 
 # Flask on Heroku
 
