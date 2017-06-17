@@ -1,6 +1,8 @@
-from flask import Flask, render_template, request, redirect
+from flask import Flask, render_template, request, redirect, make_response
 
 app = Flask(__name__)
+
+app.vars = {}
 
 @app.route('/')
 def main():
@@ -11,7 +13,29 @@ def index():
     if request.method == 'GET':
         return render_template('index.html')
     else:
-        return render_template('index.html')
+        return redirect('/plot')
+        #return render_template('plot.html', name=app.vars['name'])
+
+@app.route('/plot', methods=['POST'])
+def plot():
+    import datetime
+    from bokeh.plotting import figure
+    from bokeh.embed import components
+    from api_data import get_data
+
+    app.vars['name'] = 'FB'
+    df = get_data(app.vars['name'])
+
+    p = figure(title='%s Data from Quandle WIKI set' %app.vars['name'] ,
+               x_axis_label='Date',
+               x_axis_type='datetime',
+               y_axis_label='Open Price ($)',
+               toolbar_location="below",
+               toolbar_sticky=False)
+    p.circle(df['datetime'], df['open'])
+    script, div = components(p)
+    return render_template('plot.html', script=script, div=div)
+
 
 if __name__ == '__main__':
     #app.run(port=33507)
