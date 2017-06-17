@@ -11,6 +11,7 @@ def getdatetime(unidate):
 
 def get_data(ticker):
     #ticker: string, stock ticker
+
     para = {'qopts.columns':'date,open',
             'api_key':'uAAPYoy-nzBK3fcmXFAZ',
             'ticker':ticker}
